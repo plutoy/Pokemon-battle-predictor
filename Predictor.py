@@ -6,7 +6,7 @@ combats_df = pd.read_csv("combats.csv")
 tests_df = pd.read_csv("tests.csv")
 pokemon_df.drop(["Name","Generation","Legendary"],axis=1,inplace = True)
 
-#Change the type of pokemon to numerical value
+
 tp=[]
 for i in range(len(pokemon_df)):
     tp.append(pokemon_df["Type 1"][i])
@@ -26,7 +26,7 @@ for i in range(len(pokemon_df)):
 pokemon_df["Type 2"]=pokemon_df["Type 2"].fillna(0)
 print(pokemon_df)
 
-#Merge combats table and pokemon table
+#Merge tables
 merged1 = combats_df.merge(pokemon_df, how = "left", left_on = "First_pokemon", right_on = "#")
 merged2 = combats_df.merge(pokemon_df, how = "left", left_on = "Second_pokemon", right_on = "#")
 for i in merged2.columns : 
